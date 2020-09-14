@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'mip_validator'
+
+MipValidator::Runner.run ARGV

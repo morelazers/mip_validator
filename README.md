@@ -1,12 +1,12 @@
-# SIP validator
-[![Gem](https://img.shields.io/gem/v/sip_validator.svg?style=flat)](http://rubygems.org/gems/sip_validator "View this project in Rubygems")
+# MIP validator
+[![Gem](https://img.shields.io/gem/v/mip_validator.svg?style=flat)](http://rubygems.org/gems/mip_validator "View this project in Rubygems")
 
 
 ## Validation rules
 
 ### Mandatory fields
 
-- sip or sccp
+- mip or mccp
 - title
 - author
 - status
@@ -33,27 +33,27 @@
 ## Setup
 
 ```
-gem install sip_validator
+gem install mip_validator
 ```
 
 ## Usage (command line)
 
 ```ruby
-sip_validator INPUT_FILES
+mip_validator INPUT_FILES
 ```
 
 ## Usage (as a lib)
 
 ```ruby
-require 'sip_validator
+require 'mip_validator
 
-SipValidator::Runner.run 
+MipValidator::Runner.run
 ```
 
 ### Example
 
 ```
-$sip_validator  ~/src/SIPs/SIPS/*[0-9].md
+$mip_validator  ~/src/MIPs/MIPS/*[0-9].md
 
 total:1, valid:1, invalid:0, errors:0
 	statuses: [["Implemented", 1]]

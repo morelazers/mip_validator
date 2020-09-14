@@ -1,17 +1,18 @@
-RSpec.describe SipValidator do
+RSpec.describe MipValidator do
   it "has a version number" do
-    expect(SipValidator::VERSION).not_to be nil
+    expect(MipValidator::VERSION).not_to be nil
   end
 
-  it "raises exception if it includes invalid sips" do
+  it "raises exception if it includes invalid mips" do
     expect{
-      SipValidator::Runner.run Dir["spec/fixtures/valid/*md"]
+      MipValidator::Runner.run Dir["spec/fixtures/valid/*md"]
     }.not_to raise_error
   end
 
-  it "raises exception if it includes invalid sips" do
+  RSpec::Expectations.configuration.on_potential_false_positives = :nothing
+  it "raises exception if it includes invalid mips" do
     expect{
-      SipValidator::Runner.run Dir["spec/fixtures/invalid/*md"]
+      MipValidator::Runner.run Dir["spec/fixtures/invalid/*md"]
     }.to raise_error
   end
 end

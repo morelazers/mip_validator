@@ -1,10 +1,10 @@
-require "sip_validator/version"
-require 'sip_validator/loader'
-require 'sip_validator/validator'
+require "mip_validator/version"
+require 'mip_validator/loader'
+require 'mip_validator/validator'
 
-module SipValidator
+module MipValidator
   class Runner
-    class << self  
+    class << self
       def run(file_names)
         num_valid = 0
         num_invalid = 0
@@ -17,16 +17,16 @@ module SipValidator
         layers = []
         file_names.map do |file_name|
           # Disable file check
-          # unless file_name.match(/.*sip-\d+.md$/)
-          #   puts "Warning: #{file_name} does not match sip file format"
+          # unless file_name.match(/.*mip-\d+.md$/)
+          #   puts "Warning: #{file_name} does not match mip file format"
           #   next
           # end
           attributes = Loader.load(file_name)
           total+=1
-          begin 
+          begin
             v = Validator.new(attributes)
             if v.valid?
-              num_valid+=1      
+              num_valid+=1
             else
               num_invalid+=1
               puts "#{file_name} is NOT valid:\t #{v.errors.messages}"
@@ -37,7 +37,7 @@ module SipValidator
             num_error+=1
           end
         end
-              
+
         puts "\n\ntotal:#{total}, valid:#{num_valid}, invalid:#{num_invalid}, errors:#{num_error}"
         puts "\tstatuses: #{aggregate(statuses)}"
         raise "#{num_invalid} invalid entities" unless num_invalid == 0
@@ -47,7 +47,7 @@ module SipValidator
 
       def aggregate(array)
         array.group_by{|k,v| k}.map{|k,v| [k,v.length]}
-      end  
+      end
     end
   end
 end
